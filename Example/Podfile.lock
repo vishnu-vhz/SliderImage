@@ -1,0 +1,16 @@
+PODS:
+  - ImageSlider (0.1.0)
+
+DEPENDENCIES:
+  - ImageSlider (from `../`)
+
+EXTERNAL SOURCES:
+  ImageSlider:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  ImageSlider: f657ca41d4b115b0a84983cc2b687b916047378f
+
+PODFILE CHECKSUM: e1eba26e91787161d6ce1de1f0437bb4f85d54de
+
+COCOAPODS: 1.8.4
