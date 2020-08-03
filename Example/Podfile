@@ -6,6 +6,5 @@ target 'ImageSlider_Example' do
   target 'ImageSlider_Tests' do
     inherit! :search_paths
 
-    
-  end
+ end
 end

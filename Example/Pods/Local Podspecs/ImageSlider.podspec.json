@@ -1,9 +1,9 @@
 {
   "name": "ImageSlider",
   "version": "0.1.0",
-  "summary": "A short description of ImageSlider.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/vishnu-vhz/ImageSlider",
+  "summary": "Image Slider for iOS Apps",
+  "description": "TODO: Add long description of the pod here.\nInstall ImageSlider library it will help to avoid multiple code line",
+  "homepage": "https://github.com/vishnu-vhz/SliderImage",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,11 +12,14 @@
     "vishnu-vhz": "vishnup158@gmail.com"
   },
   "source": {
-    "git": "https://github.com/vishnu-vhz/ImageSlider.git",
+    "git": "https://github.com/vishnu-vhz/SliderImage.git",
     "tag": "0.1.0"
   },
   "platforms": {
-    "ios": "8.0"
+    "ios": "11.0"
   },
-  "source_files": "ImageSlider/Classes/**/*"
+  "swift_versions": "4.0",
+  "source_files": "ImageSlider/Classes/**/*",
+  "frameworks": "UIKit",
+  "swift_version": "4.0"
 }

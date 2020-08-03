@@ -4,8 +4,9 @@ import Foundation
 public class ImageSlider : UIView{
     var collection : UICollectionView!
     var pageController : UIPageControl!
-    var pageNumber = Int()
-
+    var pageNumber = CGFloat()
+    var timer = Timer()
+     var counter = 0
      let customCellId = "cell"
     ///IB Inspectable
     //var collectionView = UICollectionView()
@@ -17,8 +18,33 @@ public class ImageSlider : UIView{
         collection.delegate = self
         collection.dataSource = self
         collection.register(customImageCell.self, forCellWithReuseIdentifier: customCellId)
+        
+        self.timer = Timer.scheduledTimer(timeInterval: TimeInterval(pageNumber), target: self, selector: #selector(self.changeImage), userInfo: nil, repeats: true)
         //collection.isDirectionalLockEnabled =
       }
+    
+    fileprivate  var dataArray = [String]()
+       public var imageArray = [String]() {
+           didSet{
+               self.dataArray = self.imageArray
+           }
+       }
+    
+    @objc func changeImage(){
+        if counter < dataArray.count{
+            let index = IndexPath.init(item: counter, section: 0)
+            self.collection.scrollToItem(at: index, at: .centeredHorizontally, animated: true)
+            pageController.currentPage = counter
+            counter += 1
+        }else{
+            counter = 0
+             let index = IndexPath.init(item: counter, section: 0)
+             self.collection.scrollToItem(at: index, at: .centeredHorizontally, animated: false)
+            pageController.currentPage = counter
+             counter = 1
+        }
+        
+    }
     
     
           @IBInspectable public var borderWidth: CGFloat = 1.0 {
@@ -33,31 +59,28 @@ public class ImageSlider : UIView{
               }
           }
     
+    
+    
           @IBInspectable public var cornerRadius: CGFloat = 5.0 {
               didSet {
                   layer.cornerRadius = cornerRadius
               }
           }
     
-          @IBInspectable public var imageNumber: Int = 5 {
+    @IBInspectable public var timeInterval: CGFloat = 1.0 {
               didSet {
-                  pageNumber = imageNumber
+                  pageNumber = timeInterval
               }
           }
     
-    fileprivate  var dataArray = [String]()
-       public var imageArray = [String]() {
-           didSet{
-               self.dataArray = self.imageArray
-           }
-       }
+
     
 }
 extension ImageSlider : UICollectionViewDelegate ,UICollectionViewDataSource ,UICollectionViewDelegateFlowLayout{
     
  
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imageNumber
+        return dataArray.count
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
